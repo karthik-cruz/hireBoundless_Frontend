@@ -1,5 +1,5 @@
 import React from 'react'
-import toast from 'react-hot-toast';
+
 
 const Header = () => {
 
@@ -7,7 +7,7 @@ const Header = () => {
 
     return (
         <div>
-            Header
+            header
         </div>
     )
 }
