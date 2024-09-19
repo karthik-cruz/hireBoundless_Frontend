@@ -4,8 +4,12 @@ import storage from "redux-persist/lib/storage";
 //slices ----
 import { loginUserSlice } from "./slices/loginUserSlice";
 import { signupUserSlice } from "./slices/signupUserSlice";
-
-
+import { verifyOtpSlice } from "./slices/verifyOtpSlice";
+import { forgotPasswordSlice } from "./slices/forgotPasswordSlice";
+import { resetPasswordSlice } from "./slices/resetPasswordSlice";
+import { companyCreateSlice } from "./slices/companyCreateSlice";
+import { getUserSlice } from "./slices/getUserSlice";
+import { profileCreateSlice } from "./slices/profileCreateSlice";
 
 // Configure persist
 const persistConfig = {
@@ -18,6 +22,12 @@ const persistConfig = {
 const reducer = combineReducers({
     loginUser: loginUserSlice.reducer,
     signupUser: signupUserSlice.reducer,
+    verifyOtp: verifyOtpSlice.reducer,
+    forgotPassword: forgotPasswordSlice.reducer,
+    resetPassword: resetPasswordSlice.reducer,
+    companyCreate: companyCreateSlice.reducer,
+    getUser: getUserSlice.reducer,
+    profileCreate: profileCreateSlice.reducer
 
 })
 

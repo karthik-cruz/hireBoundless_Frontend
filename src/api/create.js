@@ -9,9 +9,33 @@ const signupUser = async (data) => {
     return await createByApi(END_POINTS.signup, data)
 }
 
+const forgotPassword = async (data) => {
+    return await createByApi(END_POINTS.forgotPassword, data)
+}
+
+const resetPassword = async (data) => {
+    return await createByApi(END_POINTS.resetPassword, data)
+}
+
+const verifyOtp = async (data) => {
+    return await createByApi(END_POINTS.verifyOtp, data)
+}
+
+const companyCreate = async (data) => {
+    return await createByApi(END_POINTS.companyCreate, data)
+}
+
+const profileCreate = async (data) => {
+    return await createByApi(END_POINTS.profileCreate, data)
+}
 
 
 export {
     loginUser,
-    signupUser
+    signupUser,
+    forgotPassword,
+    resetPassword,
+    verifyOtp,
+    companyCreate,
+    profileCreate
 }
