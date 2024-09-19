@@ -5,58 +5,91 @@ import Layout from './layouts/layout';
 import store, { persistor } from './redux/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-//importing pages -------------------
+// importing pages -------------------
 import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
-
+import ForgotPassword from './pages/forgotPassword/forgotPassword';
+import { useState, useEffect } from 'react';
+import AppLoading from './components/appLoading/appLoading';
+import Details from './pages/details/details';
+import Jobs from './pages/jobs/jobs';
+import Companies from './pages/companies/companies';
 
 function App() {
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    setToken(storedToken);
+  }, []);
+
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-
+      <PersistGate loading={<AppLoading />} persistor={persistor}>
         <Router>
           <Routes>
-            {/* Define your route here  */}
+            {/* Public routes */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+
+            {/* Protected route */}
             <Route path="/" element={<Layout />}>
-              {/* Define your child route here  */}
-              <Route path="login" element={<Login />} />
-              <Route path="signup" element={<Signup />} />
+              {/* Redirect '/' to '/jobs' */}
+              <Route index element={<Navigate to="/jobs" />} />
+
+              {/* Child routes */}
+              <Route path="jobs" element={<Jobs />} />
+              <Route path="companies" element={<Companies />} />
             </Route>
+
+
+            {/* Protected routes */}
+            <Route path="/details" element={<Details />} />
+
+
+
+
           </Routes>
         </Router>
 
         <Toaster
-          position="bottom-center"
+          position="top-right"
           reverseOrder={false}
           gutter={8}
           containerClassName=""
           containerStyle={{
 
+
           }}
           toastOptions={{
-            // Define default options
-            className: '',
+            // Default toast options
+            className: 'animate-slide-down',
             duration: 3000,
             style: {
-              background: '#363636',
-              color: '#fff',
+              border: '2px solid #1dd1a1',
+              boxShadow: '5px 5px 10px rgba(0, 0, 10, 1)',
+              background: '#fff', // Change default background color (e.g., blue)
+              color: '#000', // Text color
             },
-
-            // Default options for specific types
+            // Success toast options
             success: {
-              duration: 3000,
+              duration: 2000,
+              style: {
+                // background: '#28a745', // Change success background color (e.g., green)
+                // color: '#fff', // Success text color
+              },
               theme: {
                 primary: 'green',
                 secondary: 'black',
               },
             },
+            // You can add error, warning, etc. styles here as well
           }}
         />
 
       </PersistGate>
     </Provider>
-
   );
 }
 
