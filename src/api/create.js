@@ -25,10 +25,16 @@ const companyCreate = async (data) => {
     return await createByApi(END_POINTS.companyCreate, data)
 }
 
-const profileCreate = async (data) => {
-    return await createByApi(END_POINTS.profileCreate, data)
+
+
+const jobPost = async (data) => {
+    return await createByApi(END_POINTS.jobPost, data)
 }
 
+
+// const profileCreate = async (data) => {
+//     return await createByApi(END_POINTS.profileCreate, data)
+// }
 
 export {
     loginUser,
@@ -37,5 +43,6 @@ export {
     resetPassword,
     verifyOtp,
     companyCreate,
-    profileCreate
+    // profileCreate,
+    jobPost
 }

@@ -54,7 +54,7 @@ const Login = () => {
                     }, 2000)
                     formik.resetForm();
                 } else {
-                    toast.error(response?.payload?.message)
+                    toast.error(response?.payload?.message || "NetWork issue. Please try again")
                     setLoading(false)
                 }
             })
@@ -62,9 +62,11 @@ const Login = () => {
     })
 
 
+
     return (
         //#1dd1a1
         <div className='w-[100%] h-[100vh]  bg-[#1dd1a1] flex '>
+
 
             {/* left container */}
             <div style={{ backgroundImage: `url(${homeBackground})` }}
@@ -100,8 +102,8 @@ const Login = () => {
                             <input className='w-full ps-2 outline-none border-none' name="password" id="password" onChange={formik.handleChange} value={formik.values.password} type={showPassword ? "text" : "password"} placeholder="Password" />
 
                             {showPassword ?
-                                <IoEyeOutline color='gray' size={25} onClick={() => setShowPassword(!showPassword)} /> :
-                                <IoEyeOffOutline color='gray' size={25} onClick={() => setShowPassword(!showPassword)} />}
+                                <IoEyeOutline     className='cursor-pointer'  color='gray' size={25} onClick={() => setShowPassword(!showPassword)} /> :
+                                <IoEyeOffOutline  className='cursor-pointer'  color='gray' size={25} onClick={() => setShowPassword(!showPassword)} />}
 
                         </div>
                         {formik.touched.password && formik.errors.password && <div className='text-red-500 mt-[2px] flex items-center gap-1 w-full text-[14px] text-start'>

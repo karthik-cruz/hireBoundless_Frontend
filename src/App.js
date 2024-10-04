@@ -14,6 +14,7 @@ import AppLoading from './components/appLoading/appLoading';
 import Details from './pages/details/details';
 import Jobs from './pages/jobs/jobs';
 import Companies from './pages/companies/companies';
+import Profile from './pages/profile/profile';
 
 function App() {
   const [token, setToken] = useState(null);
@@ -37,15 +38,17 @@ function App() {
             <Route path="/" element={<Layout />}>
               {/* Redirect '/' to '/jobs' */}
               <Route index element={<Navigate to="/jobs" />} />
-
               {/* Child routes */}
-              <Route path="jobs" element={<Jobs />} />
-              <Route path="companies" element={<Companies />} />
+              <Route path="/jobs" element={<Jobs />} />
+              <Route path="/companies" element={<Companies />} />
+              <Route path="/profile" element={<Profile />} />
+
+
             </Route>
 
 
             {/* Protected routes */}
-            <Route path="/details" element={<Details />} />
+            {/* <Route path="/details" element={<Details />} /> */}
 
 
 

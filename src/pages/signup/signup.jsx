@@ -110,8 +110,8 @@ const Signup = () => {
                             <input className='w-full ps-2 outline-none border-none' name="password" id="password" onChange={formik.handleChange} value={formik.values.password} type={showPassword ? "text" : "password"} placeholder="Password" />
 
                             {showPassword ?
-                                <IoEyeOutline color='gray' size={25} onClick={() => setShowPassword(!showPassword)} /> :
-                                <IoEyeOffOutline color='gray' size={25} onClick={() => setShowPassword(!showPassword)} />}
+                                <IoEyeOutline    className='cursor-pointer'  color='gray' size={25} onClick={() => setShowPassword(!showPassword)} /> :
+                                <IoEyeOffOutline className='cursor-pointer' color='gray' size={25} onClick={() => setShowPassword(!showPassword)} />}
 
                         </div>
                         {formik.touched.password && formik.errors.password && <div className='text-red-500 absolute bottom-[-18px] mt-[2px] flex items-center gap-1 w-full text-[14px] text-start'>

@@ -9,7 +9,9 @@ import { forgotPasswordSlice } from "./slices/forgotPasswordSlice";
 import { resetPasswordSlice } from "./slices/resetPasswordSlice";
 import { companyCreateSlice } from "./slices/companyCreateSlice";
 import { getUserSlice } from "./slices/getUserSlice";
-import { profileCreateSlice } from "./slices/profileCreateSlice";
+import { jobPostSlice } from "./slices/postJobSlice";
+import { getCompanySlice } from "./slices/getCompanySlice";
+import { updateCompanySlice } from "./slices/updateCompanySlice";
 
 // Configure persist
 const persistConfig = {
@@ -27,8 +29,9 @@ const reducer = combineReducers({
     resetPassword: resetPasswordSlice.reducer,
     companyCreate: companyCreateSlice.reducer,
     getUser: getUserSlice.reducer,
-    profileCreate: profileCreateSlice.reducer
-
+    jobPost: jobPostSlice.reducer,
+    getCompany: getCompanySlice.reducer,
+    updateCompany: updateCompanySlice.reducer
 })
 
 
