@@ -40,7 +40,6 @@ const readByApi = async (requestUrl, params) => {
 }
 
 const readByIdApi = async (requestUrl, params) => {
-
     if (params) {
         URL = `${domain_URL}/${requestUrl}/${params}`
     } else {
