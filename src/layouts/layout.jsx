@@ -21,7 +21,7 @@ const Layout = () => {
             navigate('/login');
         } else {
             dispatch(fetchGetUser(user)).then((response) => {
-                console.log(response)
+            
                 // const userData = response?.payload?.user;
                 // if (!userData?.profile && !skipped) {
                 //     if (userData?.role === 'recruiter' || userData?.role === 'jobSeeker') {

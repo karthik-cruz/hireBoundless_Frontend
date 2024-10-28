@@ -3,7 +3,7 @@ import { MdClose } from "react-icons/md";
 
 function PopupModal(props) {
 
-    const { isOpen, setIsOpen, size, name, children } = props
+    const { isOpen, setIsOpen, size, popupFor, name, children } = props
 
 
 
@@ -15,7 +15,7 @@ function PopupModal(props) {
                     id="popup-modal"
                     className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50"
                 >
-                    <div className={`relative p-4 w-full ${size ? "max-w-4xl" : "max-w-xl"} max-h-full`}>
+                    <div className={`relative p-4 w-full ${size ? "max-w-2xl" : "max-w-xl"} max-h-full`}>
 
                         <div className="relative bg-white rounded-lg p-4 shadow border-2 border-[#1dd1a1] dark:bg-gray-100">
                             {/* model headers */}

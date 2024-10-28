@@ -87,6 +87,7 @@ const Profile = () => {
             setIsOpen(false)
             setLoading(false)
             setSubmitted(!submitted)
+            setSubmittedProfile(!submittedProfile)
             formik.resetForm()
           } else {
             toast.error(response?.payload?.message)
@@ -156,9 +157,7 @@ const Profile = () => {
     }
   })
 
-  useEffect(() => {
-    console.log('resumeRef current:', resumeRef.current); // Log the input ref
-  }, [resumeRef]);
+
 
   const formikProfile = useFormik({
     initialValues: {
@@ -254,10 +253,8 @@ const Profile = () => {
 
   const handleClick = () => {
     if (resumeRef.current) {
-      console.log('Clicking the file input...');
       resumeRef.current.click(); // Trigger file input click
     } else {
-      console.log('resumeRef.current is null');
     }
   };
 
@@ -272,7 +269,6 @@ const Profile = () => {
           'Content-Type': 'multipart/form-data', // Ensure correct headers for file upload
         }
       });
-      console.log(response)
       if (response?.data?.success) {
         toast.success(response?.data?.message);
         setSubmittedProfile(!submittedProfile);
@@ -288,6 +284,12 @@ const Profile = () => {
   const handleAvatarUpload = async (e) => {
     try {
       const file = e.target.files[0];
+
+      // Check if a file was selected
+      if (!file) {
+        return; // Exit early if no file is selected
+      }
+
       const formData = new FormData();
       formData.append("avatar", file);
 
@@ -296,7 +298,6 @@ const Profile = () => {
           'Content-Type': 'multipart/form-data', // Ensure correct headers for file upload
         }
       });
-      console.log(response)
       if (response?.data?.success) {
         toast.success(response?.data?.message);
         setSubmittedProfile(!submittedProfile);
@@ -309,8 +310,6 @@ const Profile = () => {
     }
   };
 
-
-  console.log(userData?.profile?.avatar)
 
   return (
 

@@ -17,6 +17,8 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { RiErrorWarningFill, RiLockPasswordLine } from 'react-icons/ri';
 import Button from '../../components/buttons/button';
 
+import { useGoogleLogin } from '@react-oauth/google';
+
 
 
 
@@ -54,6 +56,7 @@ const Signup = () => {
         onSubmit: (values) => {
             setLoading(true)
             dispatch(fetchSignupUser({ name: values.name, email: values.email, password: values.password, role: role })).then((response) => {
+                console.log(response, "response")
                 if (response?.payload?.success) {
                     toast.success(response?.payload?.message)
                     setTimeout(() => {
@@ -110,7 +113,7 @@ const Signup = () => {
                             <input className='w-full ps-2 outline-none border-none' name="password" id="password" onChange={formik.handleChange} value={formik.values.password} type={showPassword ? "text" : "password"} placeholder="Password" />
 
                             {showPassword ?
-                                <IoEyeOutline    className='cursor-pointer'  color='gray' size={25} onClick={() => setShowPassword(!showPassword)} /> :
+                                <IoEyeOutline className='cursor-pointer' color='gray' size={25} onClick={() => setShowPassword(!showPassword)} /> :
                                 <IoEyeOffOutline className='cursor-pointer' color='gray' size={25} onClick={() => setShowPassword(!showPassword)} />}
 
                         </div>
@@ -149,7 +152,7 @@ const Signup = () => {
                     {/* <p className='mb-0 font-medium text-[16px] text-[#10ac84] cursor-pointer text-end'>Forgot Password?</p> */}
 
                     <Button btnName="Signup" loading={loading} />
-                    <p className="mb-0 text-end text-[14px] font-bold">Already have an account? <span onClick={() => navigate('/login')} className='text-[#10ac84] cursor-pointer'>Login</span></p>
+                    <p className=" text-end mb-0 text-[14px] font-bold">Already have an account? <span onClick={() => navigate('/login')} className='text-[#10ac84] cursor-pointer'>Login</span></p>
 
                     <div className='flex items-center mb-2 justify-between'>
                         <div className='flex cursor-pointer hover:border-[#1dd1a1] items-center border mx-auto w-[50%] border-[#10ac84] py-1 px-3 rounded-[10px] justify-center gap-2'>

@@ -7,8 +7,9 @@ import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import EmptyImg from "../../assets/images/EmptyAvatar.png"
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import domain_URL from '../../config/config';
+import { persistor } from '../../redux/store';
 
 
 
@@ -22,9 +23,10 @@ const Header = () => {
     const notificationRef = useRef(null); // Reference for the notification container 
     const navigate = useNavigate()
 
+    const dispatch = useDispatch()
     const userData = useSelector(state => state?.getUser?.user)
 
-    // console.log(userData, "us")
+
 
     const toggleDropdown = () => {
         setDropdownOpen(!isDropdownOpen);
@@ -60,7 +62,13 @@ const Header = () => {
 
     const handleLogout = () => {
         localStorage.clear()
-        navigate("/login")
+        // Dispatch the logout action to clear state
+        dispatch({ type: 'logout' });
+        // Optionally, clear persisted state to reset even after page reload
+        persistor.purge();
+        // Redirect to login page after logout
+        navigate('/login');
+
     }
 
     const handleProfile = () => {
@@ -87,14 +95,13 @@ const Header = () => {
                 {/* notification and profile setting components ---------------------------- */}
                 <div className='flex items-center gap-8'>
                     <div onClick={toggleNotification} ref={notificationRef} className='border-2 w-[40px] h-[40px] relative text-[#10ac84] p-1 rounded-full cursor-pointer hover:border-[#197b66] hover:text-[#197b66] '>
-                        <IoNotifications  className=' w-full h-full' />
+                        <IoNotifications className=' w-full h-full' />
                         {isNotificationOpen && (
                             <div className={`absolute bg-white top-[48px] p-2 right-0 mt-2 w-54 border rounded-lg shadow-2xl z-10`}>
-                                <div className=' w-[100%] py-2 gap-2 flex-col flex items-center'>
-                                    <p className='pb-2 border-b w-full text-center mb-2 underline text-black font-semibold'>Notification</p>
-                                    <div>
-                                        <p className='mb-0 text-black'>KarthikS karthilee2000@gmail.com</p>
-                                    </div>
+                                <div className='w-[100px] py-2 gap-2 flex-col flex items-center'>
+
+                                    <p className='mb-0 text-black'>No notification</p>
+
                                 </div>
                             </div>
                         )}

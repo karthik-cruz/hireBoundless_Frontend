@@ -75,7 +75,6 @@ const ForgotPassword = () => {
             otp: Yup.array().of(Yup.string().required("OTP is Required"))
         }),
         onSubmit: async (values) => {
-            alert('OTP Submitted: ' + values.otp.join(''));
             setLoading(true)
             dispatch(fetchVerifyOtp({ otp: values.otp.join(''), email: Email })).then((response) => {
                 if (response.payload.success) {

@@ -9,6 +9,7 @@ export const END_POINTS = {
     companyGet: "company/get",
     companyCreate: "company/create",
     jobPost: "job/post",
+    applicationPost: "application/create",
 
     //put end-points ------
     companyUpdate: "company/update",
@@ -16,9 +17,12 @@ export const END_POINTS = {
     updatePassword: "update-password",
     profileCreate: "profile/create",
     updateAvatar: "update-avatar",
+    updateJob: "job/update",
+    updateApplication: "application/update",
 
 
-
+    //delete end-points ------
+    deleteJob: "job/delete",
 
 
 
@@ -27,5 +31,9 @@ export const END_POINTS = {
 
     //get end-points ------
     getUser: "get-user",
+    getJobs: "job/get",
+    getApplication: "application/get",
+    getAllApplicants: "application/getAll",
+    getAllCompany : "company/getAll"
 
 }

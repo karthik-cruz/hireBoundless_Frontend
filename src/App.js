@@ -11,10 +11,10 @@ import Signup from './pages/signup/signup';
 import ForgotPassword from './pages/forgotPassword/forgotPassword';
 import { useState, useEffect } from 'react';
 import AppLoading from './components/appLoading/appLoading';
-import Details from './pages/details/details';
 import Jobs from './pages/jobs/jobs';
 import Companies from './pages/companies/companies';
 import Profile from './pages/profile/profile';
+import ApplicationsList from './pages/applications/applications';
 
 function App() {
   const [token, setToken] = useState(null);
@@ -25,6 +25,8 @@ function App() {
   }, []);
 
   return (
+
+
     <Provider store={store}>
       <PersistGate loading={<AppLoading />} persistor={persistor}>
         <Router>
@@ -42,7 +44,7 @@ function App() {
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/companies" element={<Companies />} />
               <Route path="/profile" element={<Profile />} />
-
+              <Route path="/applications" element={<ApplicationsList />} />
 
             </Route>
 
@@ -71,8 +73,10 @@ function App() {
             duration: 3000,
             style: {
               border: '2px solid #1dd1a1',
+              textTransform: 'capitalize',
               boxShadow: '5px 5px 10px rgba(0, 0, 10, 1)',
               background: '#fff', // Change default background color (e.g., blue)
+              fontWeight: 'bold',
               color: '#000', // Text color
             },
             // Success toast options
@@ -93,6 +97,7 @@ function App() {
 
       </PersistGate>
     </Provider>
+
   );
 }
 
